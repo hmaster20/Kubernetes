@@ -33,8 +33,6 @@
 | pods                     | po          |
 | podsecuritypolicies      | psp         |
 | replicasets              | rs          |
-| replicationcontrollers   | rc          |
-| resourcequotas           | quota       |
 | secrets                  |             |
 | serviceaccounts          | sa          |
 | services                 | svc         |
