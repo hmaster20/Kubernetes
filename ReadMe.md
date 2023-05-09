@@ -27,7 +27,6 @@
 | ingresses                | ing         |
 | jobs                     | job         |
 | namespaces               | ns          |
-| networkpolicies          | netpol      |
 | nodes                    | no          |
 | persistentvolumeclaims   | pvc         |
 | persistentvolumes        | pv          |
@@ -67,13 +66,30 @@ kubectl get po -A -o wide | grep <word>
 # список подов внутри пространства
 kubectl -n <namespace> get po
 
-# детализация пода | команда покажет все контейнеры внутри
-kubectl -n <namespace> describe po <pod-template-hash>
+# Вывести все поды на узле
+kubectl get pods --all-namespaces -o wide --field-selector spec.nodeName=<node>
+kubectl get pods --all-namespaces -o wide --field-selector spec.nodeName=k8s-prod
 
-# вывод последних событий пода
-kubectl -n <namespace> logs -f <pod-template-hash>
+# детализация пода | команда покажет все контейнеры внутри
+kubectl -n <namespace> describe po <pod-name>
+
+# вывод событий пода в реальном времени
+kubectl -n <namespace> logs -f <pod-name>
 # вывод событий пода с построчной прокруткой
-kubectl -n <namespace> logs <pod-template-hash> | less
+kubectl -n <namespace> logs <pod-name> | less
+# вывод событий пода с построчной прокруткой для контейнера app
+kubectl -n <namespace> logs <pod-name> -c app | less
 # вывод событий пода с построчной прокруткой и ошибкой 500 для контейнера app
-kubectl -n <namespace> logs <pod-template-hash> -c app | grep 500 | less
+kubectl -n <namespace> logs <pod-name> -c app | grep 500 | less
+
+# Получить вывод команды 'date' в поде <pod-name>. По умолчанию отображается вывод из первого контейнера.
+kubectl -n <namespace> exec <pod-name> date
+# Получить вывод из запущенной команды 'date' в контейнере <container-name> пода <pod-name>.
+kubectl -n <namespace> exec <pod-name> -c <container-name> date
+# Получить интерактивный терминал (TTY) и запустить /bin/bash в поде <pod-name>.
+# По умолчанию отображается вывод из первого контейнера.
+kubectl -n <namespace> exec -ti <pod-name> /bin/bash
+kubectl -n <namespace> exec --stdin --tty <pod-name> -- /bin/bash
+kubectl -n <namespace> exec -it <pod-name> -- /bin/bash
+# ------------------------------------------------------------------
 
