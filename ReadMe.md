@@ -94,6 +94,29 @@ kubectl -n <namespace> exec -it <pod-name> -- /bin/bash
 # ------------------------------------------------------------------
 
 
+# -> Deployment
+# ------------------------------------------------------------------
+#
+kubectl -n <namespace> get deploy
+#
+kubectl -n <namespace> get deploy <deploy-name>
+#
+kubectl -n <namespace> describe deploy <deploy-name>
+#
+kubectl get deployment -A -o yaml
+#
+kubectl get deploy -A | grep worker-export
+# ------------------------------------------------------------------
+
+
+# -> Service
+# ------------------------------------------------------------------
+#
+#
+kubectl -n <namespace> describe svc <service-name>
+# ------------------------------------------------------------------
+
+
 
 # -> Job & CronJob
 # ------------------------------------------------------------------
@@ -112,3 +135,15 @@ kubectl -n <namespace> patch cronjobs <job-name> -p '{"spec" : {"suspend" : true
 kubectl -n <namespace> get cronjob <job-name>
 NAME           SCHEDULE       SUSPEND   ACTIVE   LAST SCHEDULE   AGE
 job-name       3,33 * * * *   True      3        6m45s           2y197d
+
+
+# -> Top
+# ------------------------------------------------------------------
+#
+# Использование ресурсов (CPU/Memory/Storage) для каждого пода в пространстве
+kubectl -n <namespace> top pod
+
+# Использование ресурсов (CPU/Memory/Storage) для каждого узла
+kubectl top node
+# ------------------------------------------------------------------
+
