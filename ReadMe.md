@@ -161,6 +161,18 @@ NAME           SCHEDULE       SUSPEND   ACTIVE   LAST SCHEDULE   AGE
 job-name       3,33 * * * *   True      3        6m45s           2y197d
 #
 kubectl -n <namespace> delete cronjob <job-name>
+# ------------------------------------------------------------------
+
+
+# -> ConfigMap
+# ------------------------------------------------------------------
+#
+# список всех configmap внутри пространства
+kubectl -n <namespace> get configmap
+# Отобразить содержимое
+kubectl -n <namespace> describe configmap <configmap-name>
+kubectl describe configmaps/<configmap-name>
+# ------------------------------------------------------------------
 
 
 # -> Top
@@ -168,8 +180,23 @@ kubectl -n <namespace> delete cronjob <job-name>
 #
 # Использование ресурсов (CPU/Memory/Storage) для каждого пода в пространстве
 kubectl -n <namespace> top pod
-
+#
 # Использование ресурсов (CPU/Memory/Storage) для каждого узла
 kubectl top node
 # ------------------------------------------------------------------
 
+
+# -> Event
+# ------------------------------------------------------------------
+#
+kubectl get event --namespace <namespace> --field-selector involvedObject.name=<pod-name>
+kubectl get events --output json
+# ------------------------------------------------------------------
+
+
+# -> Node
+# ------------------------------------------------------------------
+#
+kubectl get nodes --show-labels
+kubectl describe nodes <node-name>
+# ------------------------------------------------------------------
