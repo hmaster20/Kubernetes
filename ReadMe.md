@@ -118,6 +118,19 @@ kubectl -n <namespace> describe svc <service-name>
 # ------------------------------------------------------------------
 
 
+# -> Ingress
+# ------------------------------------------------------------------
+#
+# список всех ингресов
+kubectl get ing -A -o wide
+# список ингресов внутри пространства
+kubectl -n <namespace> get ingress
+# манифест ингреса
+kubectl -n <namespace> get ing <ingress-name> -o yaml
+# детализация ингреса
+kubectl -n <namespace> describe ingress <ingress-name>
+# ------------------------------------------------------------------
+
 
 # -> Job & CronJob
 # ------------------------------------------------------------------
