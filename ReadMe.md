@@ -95,6 +95,7 @@ kubectl -n <namespace> exec -it <pod-name> -- /bin/bash
 # -> Deployment
 # ------------------------------------------------------------------
 #
+# список всех деплойментов внутри пространства
 kubectl -n <namespace> get deploy
 #
 kubectl -n <namespace> get deploy <deploy-name>
@@ -110,7 +111,9 @@ kubectl get deploy -A | grep worker-export
 # -> Service
 # ------------------------------------------------------------------
 #
-#
+# список всех сервисов внутри пространства
+kubectl -n <namespace> get svc
+# детализация сервиса
 kubectl -n <namespace> describe svc <service-name>
 # ------------------------------------------------------------------
 
