@@ -122,17 +122,23 @@ kubectl -n <namespace> describe svc <service-name>
 # список заданий внутри пространства
 kubectl -n <namespace> get job
 
-# список всех заданий
-kubectl get cronjob -A
+kubectl -n <namespace> delete job <job-name>
 
-kubectl -n collector get cronjob <job-name>
+# список всех CronJob
+kubectl get cronjob -A
+# список всех CronJob внутри пространства
+kubectl -n <namespace> get cronjob
+#
+kubectl -n <namespace> get cronjob <job-name>
 NAME           SCHEDULE       SUSPEND   ACTIVE   LAST SCHEDULE   AGE
 job-name       3,33 * * * *   False     3        3m40s           2y197d
-
+#
 kubectl -n <namespace> patch cronjobs <job-name> -p '{"spec" : {"suspend" : true }}'
 kubectl -n <namespace> get cronjob <job-name>
 NAME           SCHEDULE       SUSPEND   ACTIVE   LAST SCHEDULE   AGE
 job-name       3,33 * * * *   True      3        6m45s           2y197d
+#
+kubectl -n <namespace> delete cronjob <job-name>
 
 
 # -> Top
