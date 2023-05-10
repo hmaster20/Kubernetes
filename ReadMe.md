@@ -132,14 +132,20 @@ kubectl -n <namespace> describe ingress <ingress-name>
 # ------------------------------------------------------------------
 
 
-# -> Job & CronJob
+# -> Job
 # ------------------------------------------------------------------
 #
 # список заданий внутри пространства
 kubectl -n <namespace> get job
-
+kubectl -n <namespace> get jobs.batch
+#
 kubectl -n <namespace> delete job <job-name>
+# ------------------------------------------------------------------
 
+
+# -> CronJob
+# ------------------------------------------------------------------
+#
 # список всех CronJob
 kubectl get cronjob -A
 # список всех CronJob внутри пространства
