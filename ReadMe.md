@@ -63,12 +63,11 @@ kubectl get ns
 kubectl get po -A | grep <word>
 kubectl get po -A -o wide | grep <word>
 
+# Вывести все поды на узле
+kubectl get pods --all-namespaces -o wide --field-selector spec.nodeName=<node-name>
+
 # список подов внутри пространства
 kubectl -n <namespace> get po
-
-# Вывести все поды на узле
-kubectl get pods --all-namespaces -o wide --field-selector spec.nodeName=<node>
-kubectl get pods --all-namespaces -o wide --field-selector spec.nodeName=k8s-prod
 
 # детализация пода | команда покажет все контейнеры внутри
 kubectl -n <namespace> describe po <pod-name>
