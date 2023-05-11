@@ -203,7 +203,6 @@ kubectl describe nodes <node-name>
 # ------------------------------------------------------------------
 
 
-
 # Plugins
 # ------------------------------------------------------------------
 # Посмотреть все доступные плагины kubectl можно с помощью подкоманды kubectl plugin list:
@@ -232,4 +231,9 @@ kubectl -n <namespace> get deploy
 NAME                                     READY   UP-TO-DATE   AVAILABLE   AGE
 worker-order                             1/1     1            1           64d
 ```
+
+
+
+```shell
+kubectl -n <namespace> edit configmap <configmap-name>
 
