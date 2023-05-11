@@ -15,6 +15,8 @@
 
 ## Ресурсы и их псевдонимы
 
+В таблице приведены только часто применимые компоненты, подробнее [здесь](https://kubernetes.io/ru/docs/reference/kubectl/overview/#типы-ресурсов)
+
 | Resource Name            | Short Names |
 | ------------------------ | ----------- |
 | configmaps               | cm          |
@@ -200,3 +202,13 @@ kubectl get events --output json
 kubectl get nodes --show-labels
 kubectl describe nodes <node-name>
 # ------------------------------------------------------------------
+
+
+
+# Plugins
+# ------------------------------------------------------------------
+# Посмотреть все доступные плагины kubectl можно с помощью подкоманды kubectl plugin list:
+kubectl plugin list
+
+The following compatible plugins are available:
+/usr/local/bin/kubectl-cert_manager
