@@ -211,3 +211,25 @@ kubectl plugin list
 
 The following compatible plugins are available:
 /usr/local/bin/kubectl-cert_manager
+```
+
+## Временно отключение на запуск пода (через скейлинг деплоймента)
+
+```shell
+# Смотрим какие есть деплои для воркеров
+kubectl -n <namespace> get deploy
+
+# Потушить воркер
+kubectl -n <namespace> scale --replicas=0 deployment/worker-order
+# или
+kubectl -n <namespace> scale --replicas=0 deployment worker-order
+
+# Запустить воркер
+kubectl -n <namespace> scale --replicas=1 deployment/worker-order
+
+# Смотрим какие есть деплои для воркеров
+kubectl -n <namespace> get deploy
+NAME                                     READY   UP-TO-DATE   AVAILABLE   AGE
+worker-order                             1/1     1            1           64d
+```
+
