@@ -172,7 +172,9 @@ kubectl -n <namespace> delete cronjob <job-name>
 kubectl -n <namespace> get configmap
 # Отобразить содержимое
 kubectl -n <namespace> describe configmap <configmap-name>
-kubectl describe configmaps/<configmap-name>
+kubectl -n <namespace> describe configmaps/<configmap-name>
+# Открывает редактор для изменения
+kubectl -n <namespace> edit configmap <configmap-name>
 # ------------------------------------------------------------------
 
 
