@@ -250,12 +250,30 @@ kubectl -n <namespace> scale --replicas=0 deployment worker-order
 # Запустить воркер
 kubectl -n <namespace> scale --replicas=1 deployment/worker-order
 
-# Смотрим какие есть деплои для воркеров
+# Смотрим какие есть деплойменты для воркеров
 kubectl -n <namespace> get deploy
 NAME                                     READY   UP-TO-DATE   AVAILABLE   AGE
 worker-order                             1/1     1            1           64d
 ```
 
+## Вывод из управления узла (воркера) и его возврат
+
+```shell
+# Смотрим топ загрузки каждой ноды и выбираем менее загруженную
+kubectl top node
+
+# Далее необходимо вывести одну ноду из кластера
+kubectl drain <node-name>
+
+# Заходим на сервер и выключаем его
+poweroff
+
+# Включаем и подключаем обратно в кластер
+kubectl uncordon <node-name>
+
+# Обязательно проверяем, что нода в статусе ready
+kubectl get node -o wide | grep <node-name>
+```
 
 
 ```shell
