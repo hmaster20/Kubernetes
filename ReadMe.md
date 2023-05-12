@@ -222,15 +222,24 @@ kubectl -n <namespace> get ds <daemonset-name> -o yaml
 # ------------------------------------------------------------------
 # Посмотреть все доступные плагины kubectl можно с помощью подкоманды kubectl plugin list:
 kubectl plugin list
-
+..
 The following compatible plugins are available:
 /usr/local/bin/kubectl-cert_manager
+..
+kubectl -n <namespace> get certificaterequests
+kubectl -n cert-manager logs <pod-name>
+kubectl cert-manager renew -n <namespace> ???
+kubectl cert-manager renew -n <namespace> php-domains-ru
+kubectl -n <namespace> get certificate
+kubectl -n <namespace> delete certificaterequests php-domains-ru-lr45x
+kubectl -n cert-manager get po -o wide
+# ------------------------------------------------------------------
 ```
 
 ## Временно отключение на запуск пода (через скейлинг деплоймента)
 
 ```shell
-# Смотрим какие есть деплои для воркеров
+# Смотрим какие есть деплойменты для воркеров
 kubectl -n <namespace> get deploy
 
 # Потушить воркер
