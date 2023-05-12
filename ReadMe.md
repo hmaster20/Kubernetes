@@ -201,16 +201,19 @@ kubectl get events --output json
 # ------------------------------------------------------------------
 #
 kubectl get nodes --show-labels
+#
 kubectl describe nodes <node-name>
+#
+kubectl edit node <node-name>
 # ------------------------------------------------------------------
-
 
 
 # -> DaemonSet
 # ------------------------------------------------------------------
 #
+# список всех DaemonSet внутри пространства
 kubectl -n <namespace> get ds
-#
+# Отобразить содержимое DaemonSet в формате Yaml
 kubectl -n <namespace> get ds <daemonset-name> -o yaml
 # ------------------------------------------------------------------
 
