@@ -279,3 +279,16 @@ kubectl get node -o wide | grep <node-name>
 ```shell
 kubectl -n <namespace> edit configmap <configmap-name>
 
+# Т.е. чтобы переселить поды нужно, нужно узлы "закордонить" конкретные узлы
+kubectl cordon <node-name>
+
+# Вывести список всех подов на каждом узле с сортировкой по узлам
+kubectl -n <namespace> get pod -o wide --sort-by=.spec.nodeName
+
+# Выбрать лишние поды и удалить, при это они автоматом запустятся на доступных узлах
+kubectl -n <namespace> delete pod <pod-name>
+
+# Восстанавливаем управление планировщиком для всех узлов
+kubectl uncordon <node-name>
+```
+
